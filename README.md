@@ -1,12 +1,32 @@
-## NodeJS Actions App File Guide
+## Playful ASCII Studio
 
-Use this as a quick reference for what each file is for.
+This app is the "pipeline 3" project in the workshop. It turns pipeline 2's ASCII idea into an interactive editor.
 
-- `.github/workflows/pages.yml`: CI/CD workflow that runs tests, builds the app, and deploys to GitHub Pages.
-- `index.html`: Base HTML shell and source banner text (`#banner-text`) used by the app.
-- `src/main.js`: App entry point. Reads text from HTML, runs figlet, then calls the renderer.
-- `src/render.js`: Rendering module that injects banner UI into `#app`.
-- `__tests__/render.test.js`: Jest test for render output.
-- `vite.config.js`: Vite configuration for dev/build and deployment base path.
-- `package.json`: Project metadata, scripts, and dependencies (including `figlet`).
-- `.gitignore`: Excludes generated folders (`node_modules`, `dist`) from git.
+### What it does
+- Lets users type text in a textarea.
+- Lets users choose one render mode at a time: `figlet` or `cowsay`.
+- Shows a full cowsay character list.
+- Lets users change text color, background color, and text size.
+- Updates preview live as controls change.
+
+### Run locally
+```bash
+npm install
+npm run dev
+```
+
+### Test and build
+```bash
+npm test
+npm run build
+```
+
+### File guide
+- `.github/workflows/pages.yml`: CI/CD workflow for test, build, and GitHub Pages deploy.
+- `index.html`: Editor controls and preview container.
+- `src/main.js`: UI controller and live preview event wiring.
+- `src/ascii.js`: Figlet/cowsay helper functions and option loading.
+- `src/render.js`: Preview rendering with chosen colors and size.
+- `__tests__/render.test.js`: Unit test for render output.
+- `__tests__/ascii.test.js`: Unit tests for ASCII helper functions.
+- `vite.config.js`: Vite config for dev/build and deployment path.
