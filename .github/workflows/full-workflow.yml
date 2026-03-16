@@ -1,6 +1,6 @@
 
 # CI/CD workflow: test the app, build static assets, and deploy to GitHub Pages.
-name: Build, Test & Deploy a NodeJS application to GitHub Pages
+name: Full Workflow Pipeline
 
 on:
   push:
@@ -44,5 +44,4 @@ jobs:
     environment:
       name: github-pages
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - uses: actions/deploy-pages@v4

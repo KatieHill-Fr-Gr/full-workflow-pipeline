@@ -100,9 +100,9 @@ export async function getFigletFonts() {
 }
 
 export async function getCows() {
-  const names = Object.keys(COW_MAP).sort();
-  if (names.length > 0) {
-    return names;
-  }
-  return FALLBACK_COWS;
+    const names = Object.keys(COW_MAP).sort();
+    if (names.length > 0) {
+        return names;
+    }
+    return FALLBACK_COWS;
 }
