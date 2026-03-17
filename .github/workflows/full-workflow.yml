@@ -1,0 +1,49 @@
+
+# CI/CD workflow: test the app, build static assets, and deploy to GitHub Pages.
+name: Full Workflow Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  # Allow manual triggering of the workflow from the GitHub UI
+  workflow_dispatch:
+
+# Permissions are required for the deploy step to work. The test and build steps only need read permissions, but the deploy step needs write permissions for pages and id-token.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci || npm i
+      - run: npm test
+
+  build:
+    needs: test          # ← build waits for test to pass
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci || npm i
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build         # ← deploy waits for build to finish
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/deploy-pages@v4

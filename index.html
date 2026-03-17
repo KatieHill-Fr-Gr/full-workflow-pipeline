@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playful ASCII Studio</title>
+  <style>
+    :root {
+      --panel: #fff4d8;
+      --panel-border: #d6b86a;
+      --ink: #1f2937;
+      --accent: #d97706;
+      --card: #ffffff;
+    }
+
+    body {
+      font-family: ui-rounded, "Trebuchet MS", "Avenir Next", sans-serif;
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 12%, #ffe0b2 0%, transparent 26%),
+        radial-gradient(circle at 84% 20%, #fef08a 0%, transparent 23%),
+        linear-gradient(145deg, #fff7e6, #fff1f2 70%, #eef2ff);
+      min-height: 100vh;
+      padding: 1.25rem;
+    }
+
+    .layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      padding: 1rem;
+      box-shadow: 0 10px 30px rgb(146 64 14 / 12%);
+    }
+
+    .controls {
+      display: grid;
+      gap: 0.9rem;
+      grid-template-columns: 1fr;
+    }
+
+    label {
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    textarea,
+    select,
+    input[type='color'],
+    input[type='range'] {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      background: #ffffff;
+      padding: 0.55rem 0.7rem;
+      font: inherit;
+      box-sizing: border-box;
+    }
+
+    .two-col {
+      display: grid;
+      gap: 0.8rem;
+      grid-template-columns: 1fr;
+    }
+
+    .app {
+      background: var(--card);
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 1rem;
+      box-shadow: 0 8px 24px rgb(15 23 42 / 10%);
+      min-height: 340px;
+    }
+
+    .timestamp {
+      margin: 0.6rem 0 0;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .preview {
+      border-radius: 12px;
+      border: 1px dashed #d1d5db;
+      padding: 1rem;
+      margin: 0;
+      overflow-x: auto;
+      white-space: pre;
+      transition: all 160ms ease;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 1.6rem;
+      color: #7c2d12;
+    }
+
+    .subtitle {
+      margin: 0.4rem 0 0;
+      color: #92400e;
+      font-size: 0.95rem;
+    }
+
+    @media (min-width: 860px) {
+      .layout {
+        grid-template-columns: 360px 1fr;
+        align-items: start;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="./assets/index-C9rtEVFN.js"></script>
+</head>
+
+<body>
+  <main class="layout">
+    <section class="panel controls" aria-label="editor-controls">
+      <header>
+        <h1 class="title">Playful ASCII Studio</h1>
+        <p class="subtitle">Type your message, pick a style, and remix the look live.</p>
+      </header>
+
+      <label for="text-input">
+        Your text
+        <textarea id="text-input" rows="4">Pipeline Workshop</textarea>
+      </label>
+
+      <div class="two-col">
+        <label for="mode-select">
+          Style type
+          <select id="mode-select">
+            <option value="figlet">Figlet</option>
+            <option value="cowsay">Cowsay</option>
+          </select>
+        </label>
+
+        <label id="figlet-group" for="figlet-select">
+          Figlet font
+          <select id="figlet-select"></select>
+        </label>
+
+        <label id="cow-group" for="cow-select" hidden>
+          Cowsay character
+          <select id="cow-select"></select>
+        </label>
+
+        <label for="text-color">
+          Text color
+          <input id="text-color" type="color" value="#111827" />
+        </label>
+
+        <label for="bg-color">
+          Background color
+          <input id="bg-color" type="color" value="#f9fafb" />
+        </label>
+      </div>
+
+      <label for="size-range">
+        Text size
+        <input id="size-range" type="range" min="10" max="28" value="14" />
+      </label>
+    </section>
+
+    <section class="app" aria-live="polite">
+      <div id="app"></div>
+    </section>
+  </main>
+
+</body>
+
+</html>
