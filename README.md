@@ -1,3 +1,5 @@
+Workshop run on 17 March 2026
+
 ## Playful ASCII Studio
 
 This app is the "pipeline 3" project in the workshop. It turns pipeline 2's ASCII idea into an interactive editor.
