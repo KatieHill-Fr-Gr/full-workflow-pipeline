@@ -1,4 +1,4 @@
-Workshop run on 17 March 2026
+Workshop run on 17 March 2026 - Test 2
 
 ## Playful ASCII Studio
 
